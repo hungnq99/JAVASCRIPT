@@ -184,6 +184,7 @@ function sudoku(grid) {
         columns.push([])
         boxes.push([])
     }
+    
     for(var i = 0; i<grid.length;i++){
         for(var j = 0; j<grid[i].length; j++){
             columns[j].push(grid[i][j]);

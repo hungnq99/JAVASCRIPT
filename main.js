@@ -178,9 +178,12 @@ function spiralNumbers(n) {
 
 function sudoku(grid) {
     var nums  = '123456789';
-    var columns = [[],[],[],[],[],[],[],[],[]];
-    var boxes = [[],[],[],[],[],[],[],[],[]];
-    
+    var columns = [];
+    var boxes = [];
+    for(var i = 0; i < 9; i++) {
+        columns.push([])
+        boxes.push([])
+    }
     for(var i = 0; i<grid.length;i++){
         for(var j = 0; j<grid[i].length; j++){
             columns[j].push(grid[i][j]);

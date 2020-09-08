@@ -156,7 +156,7 @@ function spiralNumbers(n) {
         x++;
         y--;
         console.log(x + " " + y);
-        
+
         while (y >= 1 + temp) {
             arr[y - 1][x - 1] = i;
             moveUp();
@@ -166,10 +166,10 @@ function spiralNumbers(n) {
             console.log(x + " " + y);
 
         }
-        
+
         x++;
         y++;
-        
+
 
     }
 
@@ -177,36 +177,53 @@ function spiralNumbers(n) {
 }
 
 function sudoku(grid) {
-    var nums  = '123456789';
+    var nums = '123456789';
     var columns = [];
     var boxes = [];
-    for(var i = 0; i < 9; i++) {
+    for (var i = 0; i < 9; i++) {
         columns.push([])
         boxes.push([])
     }
-    
-    for(var i = 0; i<grid.length;i++){
-        for(var j = 0; j<grid[i].length; j++){
+
+    for (var i = 0; i < grid.length; i++) {
+        for (var j = 0; j < grid[i].length; j++) {
             columns[j].push(grid[i][j]);
-            boxes[Math.floor(i/3)*3+Math.floor(j/3)].push(grid[i][j]);
+            boxes[Math.floor(i / 3) * 3 + Math.floor(j / 3)].push(grid[i][j]);
         }
         console.log(grid[i])
-        if(grid[i].sort().join("")!=nums)return false;
-        
+        if (grid[i].sort().join("") != nums) return false;
+
     }
-    
+
     console.log(boxes)
     console.log(columns)
-    for(var i = 0; i<boxes.length; i++){
-        if(boxes[i].sort().join("")!=nums)return false;
-        if(columns[i].sort().join("")!=nums)return false;
+    for (var i = 0; i < boxes.length; i++) {
+        if (boxes[i].sort().join("") != nums) return false;
+        if (columns[i].sort().join("") != nums) return false;
     }
-    
+
     return true
 }
 
 function killKthBit(n, k) {
-    return parseInt(n.toString(2).split('').map((v,i,arr)=>(i==arr.length-k)?'0':v).join(''),2);
-    
-  }
-console.log(killKthBit(37,3))
+    return parseInt(n.toString(2).split('').map((v, i, arr) => (i == arr.length - k) ? '0' : v).join(''), 2);
+
+}
+function arrayPacking(a) {
+    // 00000000 01010101 00011000
+    // 0101010111000
+
+    return parseInt(a.map((element) => ("00000000"+element.toString(2)).substr(-8)).reverse().join(''),2)
+}
+function rangeBitCount(a, b) {
+    var packed = "";
+    while(a <= b){
+        packed += a.toString(2);
+        a++;
+    }
+    return packed.split('').reduce((a,b) => {
+        return parseInt(a) + parseInt(b);
+    },0)
+    return packed.split('1').length-1;
+}
+console.log(rangeBitCount(2,7))

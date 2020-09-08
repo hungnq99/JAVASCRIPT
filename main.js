@@ -216,14 +216,13 @@ function arrayPacking(a) {
     return parseInt(a.map((element) => ("00000000"+element.toString(2)).substr(-8)).reverse().join(''),2)
 }
 function rangeBitCount(a, b) {
-    var packed = "";
+    var number = "";
     while(a <= b){
-        packed += a.toString(2);
+        number += a.toString(2);
         a++;
     }
-    return packed.split('').reduce((a,b) => {
+    return number.split('').reduce((a,b) => {
         return parseInt(a) + parseInt(b);
     },0)
-    return packed.split('1').length-1;
 }
 console.log(rangeBitCount(2,7))
